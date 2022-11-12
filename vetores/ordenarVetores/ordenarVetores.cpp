@@ -1,0 +1,129 @@
+#include <iostream>
+
+using namespace std;
+
+int vetores[100] = {0};
+int quantidade = 0;
+int aux;
+
+void menu(){
+	cout<<endl;
+	cout<<"       __________________________________________"<<endl;
+	cout<<"      |                                          |"<<endl;
+	cout<<"      |              MENU PRINCIPAL              |"<<endl;
+	cout<<"      |                                          |"<<endl;
+	cout<<"      |     1 - CADASTRAR VETOR                  |"<<endl;
+	cout<<"      |     2 - ORDEM CRESCENTE                  |"<<endl;
+	cout<<"      |     3 - ORDEM DECRESCENTE                |"<<endl;
+	cout<<"      |     4 - ORDEM CRESCENTE E DESCRESCENTE   |"<<endl;
+	cout<<"      |     5 - ENCERRAR                         |"<<endl;
+	cout<<"      |__________________________________________|"<<endl;
+	cout<<endl;
+}
+
+int newVetor(int addVetor){
+	for(int i = 0; i < 100; i++){
+		if(vetores[i] == 0){
+			vetores[i] = addVetor;
+			quantidade++;
+			break;
+		}
+	}
+}
+
+int ordemCrescente(){
+	for(int i = 0; i < quantidade; i++){
+		for(int j = i+1; j < quantidade; j++){
+			if(vetores[i] > vetores[j]){
+				aux = vetores[i];
+				vetores[i] = vetores[j];
+				vetores[j] = aux;
+			}
+		}
+	}
+	for(int i = 0; i < quantidade; i++){
+		cout<<vetores[i]<<", ";
+	}
+}
+
+int ordemDecrescente(){
+	for(int i = 0; i < quantidade; i++){
+		for(int j = i+1; j < quantidade; j++){
+			if(vetores[i] < vetores[j]){
+				aux = vetores[i];
+				vetores[i] = vetores[j];
+				vetores[j] = aux;
+			}
+		}
+	}
+	for(int i = 0; i < quantidade; i++){
+		cout<<vetores[i]<<", ";
+	}
+}
+
+int main(){
+	setlocale(LC_ALL, "portuguese");
+	
+	int addVetor, op;
+	
+	do{
+		menu();
+		cout<<"         =>  Escolha uma operação: ";
+		cin>>op;
+		switch(op){
+			case 1:
+				//adicionar vetor
+				cout<<endl;
+				cout<<"         =>  Digite um numero: ";
+				cin>>addVetor;
+				newVetor(addVetor);
+				system("cls");
+				cout<<endl;
+				cout<<endl;
+				cout<<"         =>  Vetor armazenado com sucesso!"<<endl;
+				cout<<endl;
+				cout<<"            =>  Vetores armazenados: "<<quantidade<<endl;
+				break;
+			case 2:
+				//ordem crescente
+				cout<<endl;
+				cout<<"    =>  Exibindo vetores em ordem crescente: ";
+				ordemCrescente();
+				cout<<"FIM!"<<endl;
+				cout<<endl;
+				cout<<endl;
+				cout<<"      Deseja sair ou continuar? [5] Sair ou outro para continuar: ";
+				cin>>op;
+				system("cls");
+				break;
+			case 3:
+				//ordem decrescente
+				cout<<endl;
+				cout<<"    =>  Exibindo vetores em ordem decrescente: ";
+				ordemDecrescente();
+				cout<<"FIM!"<<endl;
+				cout<<endl;
+				cout<<endl;
+				cout<<"      Deseja sair ou continuar? [5] Sair ou outro para continuar: ";
+				cin>>op;
+				system("cls");
+				break;
+			case 4:
+				//exibir as duas opções de exibição
+				cout<<endl;
+				cout<<"    =>  Exibindo vetores em ordem crescente: ";
+				ordemCrescente();
+				cout<<"FIM!"<<endl;
+				cout<<endl;
+				cout<<"    =>  Exibindo vetores em ordem decrescente: ";
+				ordemDecrescente();
+				cout<<"FIM!"<<endl;
+				cout<<endl;
+				cout<<endl;
+				cout<<"      Deseja sair ou continuar? [5] Sair ou outro para continuar: ";
+				cin>>op;
+				system("cls");
+				break;	
+		}
+	}while(op != 5);
+}
