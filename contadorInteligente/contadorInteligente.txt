@@ -1,0 +1,48 @@
+#include <iostream>
+
+using namespace std;
+
+void final(){
+	cout<<"\n      ->   FIM!   <-"<<endl;
+}
+
+int main(){
+	setlocale(LC_ALL, "portuguese");
+	
+	int start, end, inter;
+	
+	cout<<"\n";
+	cout<<" -----  CONTADOR INTELIGENTE ----- "<<endl;
+	cout<<"\n";
+	cout<<"        Inicio: ";
+	cin>>start;
+	cout<<"        Fim: ";
+	cin>>end;
+	cout<<"        Intervalo: ";
+	cin>>inter;
+	cout<<"\n";
+	
+	cout<<"     Iniciando a contagem: "<<endl;
+	cout<<"\n";
+	
+	if (start < end){
+		for(int i = start; i <= end; i = i + inter){
+			cout<<"          -> "<<i<<endl;
+		}
+		final();
+	} else if (start > end){
+		for(int i = start; i >= end; i = i - inter){
+			cout<<"          -> "<<i<<endl;
+		}
+		final();
+	} else {
+		cout<<"ERRO = {Valores iguais} -> Admitindo inicio = 1 e intervalo = 1"<<endl;
+		start = 1;
+		inter = 1;
+		cout<<"\n";
+		for(int i = start; i <= end; i = i + inter){
+			cout<<"          -> "<<i<<endl;
+		}
+		final();
+	}
+}
